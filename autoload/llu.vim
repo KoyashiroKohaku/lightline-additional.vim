@@ -1,3 +1,12 @@
+function! llu#filename()
+  let l:name = expand('%:.')
+  if l:name ==# ''
+    return '[No Name]'
+  else
+    return l:name
+  endif
+endfunction
+
 function! llu#fileencoding()
   return toupper(&fileencoding)
 endfunction
