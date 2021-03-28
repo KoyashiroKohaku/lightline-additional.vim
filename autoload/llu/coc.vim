@@ -17,4 +17,3 @@ function! llu#coc#status()
 
   return get(g:, 'coc_status', '')
 endfunction
-
