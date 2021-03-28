@@ -1,6 +1,6 @@
 function! llu#filename()
   let l:name = expand('%:.')
-  if l:name ==# ''
+  if empty(l:name)
     return '[No Name]'
   else
     return l:name
