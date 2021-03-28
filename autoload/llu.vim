@@ -1,22 +1,22 @@
-function! llu#filename()
-  let l:name = expand('%:.')
-  if empty(l:name)
+function! llu#get_relative_path()
+  let l:relative_path = expand('%:.')
+  if empty(l:relative_path)
     return '[No Name]'
   else
-    return l:name
+    return l:relative_path
   endif
 endfunction
 
-function! llu#fileencoding()
+function! llu#get_upper_fileencoding()
   if empty(&fileencoding)
-    let l:fileencoding = &encoding
+    let l:upper_fileencoding = &encoding
   else
-    let l:fileencoding = &fileencoding
+    let l:upper_fileencoding = &fileencoding
   endif
-  return toupper(l:fileencoding)
+  return toupper(l:upper_fileencoding)
 endfunction
 
-function! llu#fileformat()
+function! llu#get_eol()
   if &fileformat ==# 'dos'
     return 'CRLF'
   elseif &fileformat ==# 'unix'
@@ -63,7 +63,7 @@ let s:filetype_dic = {
   \   'zsh': 'Zsh',
   \ }
 
-function! llu#filetype() abort
+function! llu#get_formatted_filetype() abort
   let l:formatted_filetype = get(s:filetype_dic, &filetype, &filetype)
   if empty(l:formatted_filetype)
     let l:formatted_filetype = 'Plain Text'
@@ -76,7 +76,7 @@ function! llu#filetype() abort
   return WebDevIconsGetFileTypeSymbol() . ' ' . l:formatted_filetype
 endfunction
 
-function! llu#lineinfo()
+function! llu#get_formatted_lineinfo()
   let l:lineinfo = 'L' . line('.') . ':C' . col('.')
   let l:padding = repeat(' ', 6 - len(l:lineinfo))
   return l:padding . l:lineinfo

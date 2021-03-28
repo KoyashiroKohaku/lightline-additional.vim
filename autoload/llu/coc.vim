@@ -1,4 +1,4 @@
-function! llu#coc#diagnostic_info()
+function! llu#coc#get_diagnostic_info()
   if ! get(g:, 'coc_enabled', 0)
     return ''
   endif
@@ -10,7 +10,7 @@ function! llu#coc#diagnostic_info()
   return join([g:llu_error_sign, l:error_count, g:llu_warning_sign, l:warning_count], ' ')
 endfunction
 
-function! llu#coc#status()
+function! llu#coc#get_status()
   if ! get(g:, 'coc_enabled', 0)
     return ''
   endif

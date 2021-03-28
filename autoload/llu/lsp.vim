@@ -1,4 +1,4 @@
-function! llu#lsp#diagnostic_info()
+function! llu#lsp#get_diagnostic_info()
   if ! exists('*lsp#get_buffer_diagnostics_counts')
     return ''
   endif
