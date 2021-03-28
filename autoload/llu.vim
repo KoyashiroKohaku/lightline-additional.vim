@@ -8,7 +8,12 @@ function! llu#filename()
 endfunction
 
 function! llu#fileencoding()
-  return toupper(&fileencoding)
+  if empty(&fileencoding)
+    let l:fileencoding = &encoding
+  else
+    let l:fileencoding = &fileencoding
+  endif
+  return toupper(l:fileencoding)
 endfunction
 
 function! llu#fileformat()
