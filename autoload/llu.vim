@@ -1,3 +1,7 @@
+function! llu#fileencoding()
+  return toupper(&fileencoding)
+endfunction
+
 function! llu#fileformat()
   if &fileformat ==# 'dos'
     return 'CRLF'
