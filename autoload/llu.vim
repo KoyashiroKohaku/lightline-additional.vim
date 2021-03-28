@@ -65,9 +65,14 @@ let s:filetype_dic = {
 
 function! llu#filetype() abort
   let l:formatted_filetype = get(s:filetype_dic, &filetype, &filetype)
+  if empty(l:formatted_filetype)
+    let l:formatted_filetype = 'Plain Text'
+  endif
+
   if ! exists('*WebDevIconsGetFileTypeSymbol')
     return l:formatted_filetype
   endif
+
   return WebDevIconsGetFileTypeSymbol() . ' ' . l:formatted_filetype
 endfunction
 
