@@ -31,3 +31,9 @@ function! llu#filetype() abort
   endtry
   return l:file_type_icon . ' ' . &filetype
 endfunction
+
+function! llu#lineinfo()
+  let l:lineinfo = 'L' . line('.') . ':C' . col('.')
+  let l:padding = repeat(' ', 6 - len(l:lineinfo))
+  return l:padding . l:lineinfo
+endfunction
