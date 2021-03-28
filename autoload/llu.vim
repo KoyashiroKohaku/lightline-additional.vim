@@ -59,13 +59,11 @@ let s:filetype_dic = {
   \ }
 
 function! llu#filetype() abort
-  let l:filetype = get(s:filetype_dic, &filetype, &filetype)
-  try
-    let l:file_type_icon = WebDevIconsGetFileTypeSymbol()
-  catch
-    return l:filetype
-  endtry
-  return l:file_type_icon . ' ' . l:filetype
+  let l:formatted_filetype = get(s:filetype_dic, &filetype, &filetype)
+  if ! exists('*WebDevIconsGetFileTypeSymbol')
+    return l:formatted_filetype
+  endif
+  return WebDevIconsGetFileTypeSymbol() . ' ' . l:formatted_filetype
 endfunction
 
 function! llu#lineinfo()

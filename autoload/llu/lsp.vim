@@ -1,9 +1,9 @@
 function! llu#lsp#diagnostic_info()
-  try
-    let l:counts = lsp#get_buffer_diagnostics_counts()
-  catch
+  if ! exists('*lsp#get_buffer_diagnostics_counts')
     return ''
-  endtry
+  endif
+
+  let l:counts = lsp#get_buffer_diagnostics_counts()
 
   let l:error_count = get(l:counts, 'error', 0)
   let l:warning_count = get(l:counts, 'warning', 0)
