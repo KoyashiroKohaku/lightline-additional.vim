@@ -1,4 +1,4 @@
-function! llu#get_relative_path()
+function! lightline#additional#get_relative_path()
   let l:relative_path = expand('%:.')
   if empty(l:relative_path)
     return '[No Name]'
@@ -7,16 +7,28 @@ function! llu#get_relative_path()
   endif
 endfunction
 
-function! llu#get_upper_fileencoding()
+let s:encoding_dic = {
+  \   'utf-8': 'UTF-8',
+  \   'sjis': 'Shift JIS',
+  \ }
+
+function! lightline#additional#get_encoding()
   if empty(&fileencoding)
-    let l:upper_fileencoding = &encoding
+    let l:encoding = &encoding
   else
-    let l:upper_fileencoding = &fileencoding
+    let l:encoding = &fileencoding
   endif
-  return toupper(l:upper_fileencoding)
+
+  let l:formatted_encoding = get(s:encoding_dic, l:encoding, l:encoding)
+
+  if &bomb
+    return l:formatted_encoding . ' with BOMB'
+  else
+    return l:formatted_encoding
+  endif
 endfunction
 
-function! llu#get_eol()
+function! lightline#additional#get_eol()
   if &fileformat ==# 'dos'
     return 'CRLF'
   elseif &fileformat ==# 'unix'
@@ -63,7 +75,7 @@ let s:filetype_dic = {
   \   'zsh': 'Zsh',
   \ }
 
-function! llu#get_formatted_filetype() abort
+function! lightline#additional#get_formatted_filetype() abort
   let l:formatted_filetype = get(s:filetype_dic, &filetype, &filetype)
   if empty(l:formatted_filetype)
     let l:formatted_filetype = 'Plain Text'
@@ -76,7 +88,7 @@ function! llu#get_formatted_filetype() abort
   return WebDevIconsGetFileTypeSymbol() . ' ' . l:formatted_filetype
 endfunction
 
-function! llu#get_formatted_lineinfo()
+function! lightline#additional#get_formatted_lineinfo()
   let l:lineinfo = 'L' . line('.') . ':C' . col('.')
   let l:padding = repeat(' ', 6 - len(l:lineinfo))
   return l:padding . l:lineinfo

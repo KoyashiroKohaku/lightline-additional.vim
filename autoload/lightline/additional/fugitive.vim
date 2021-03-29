@@ -1,4 +1,4 @@
-function! llu#fugitive#get_head_branch()
+function! lightline#additional#fugitive#get_head_branch()
   if ! exists('*FugitiveHead')
     return ''
   endif
@@ -8,9 +8,9 @@ function! llu#fugitive#get_head_branch()
     return ''
   endif
 
-  if ! exists('g:llu_git_sign')
+  if ! exists('g:lightline_additional_git_sign')
     return l:head
   endif
 
-  return g:llu_git_sign . ' ' . l:head
+  return g:lightline_additional_git_sign . ' ' . l:head
 endfunction
