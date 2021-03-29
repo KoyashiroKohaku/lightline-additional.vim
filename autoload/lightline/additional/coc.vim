@@ -1,4 +1,4 @@
-function! llu#coc#get_diagnostic_info()
+function! lightline#additional#coc#get_diagnostic_info()
   if ! get(g:, 'coc_enabled', 0)
     return ''
   endif
@@ -7,10 +7,10 @@ function! llu#coc#get_diagnostic_info()
   let l:error_count = get(l:info, 'error', 0)
   let l:warning_count = get(l:info, 'warning', 0)
 
-  return join([g:llu_error_sign, l:error_count, g:llu_warning_sign, l:warning_count], ' ')
+  return join([g:lightline_additional_error_sign, l:error_count, g:lightline_additional_warning_sign, l:warning_count], ' ')
 endfunction
 
-function! llu#coc#get_status()
+function! lightline#additional#coc#get_status()
   if ! get(g:, 'coc_enabled', 0)
     return ''
   endif

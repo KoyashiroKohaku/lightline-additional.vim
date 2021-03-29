@@ -1,2 +1,3 @@
-# llu.vim
-lightline utils.
+# lightline-additional.vim
+
+lightline additional functions.
