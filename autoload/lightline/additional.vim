@@ -41,6 +41,7 @@ function! lightline#additional#get_eol()
 endfunction
 
 let s:filetype_dic = {
+  \   'brewfile': 'Brewfile',
   \   'c': 'C',
   \   'cpp': 'C++',
   \   'cs': 'C#',
