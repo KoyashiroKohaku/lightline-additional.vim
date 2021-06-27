@@ -68,6 +68,7 @@ let s:filetype_dic = {
   \   'sql': 'SQL',
   \   'swift': 'Swift',
   \   'typescript': 'TypeScript',
+  \   'typescriptreact': 'React',
   \   'toml': 'TOML',
   \   'vim': 'Vim',
   \   'vue': 'Vue',
